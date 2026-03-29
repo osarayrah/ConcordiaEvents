@@ -435,20 +435,21 @@ function getSearchResults() {
 
 function renderNav(active) {
   const items = [
-    ["home", "Home"],
-    ["search", "Search"],
-    ["saved", "Saved"],
-    ["notifications", "Alerts"],
-    ["profile", "Profile"],
+    ["home", "⌂", "Home"],
+    ["search", "⌕", "Search"],
+    ["saved", "★", "Saved"],
+    ["notifications", "◔", "Alerts"],
+    ["profile", "◡", "Profile"],
   ];
 
   return `
     <nav class="bottom-nav">
       ${items
         .map(
-          ([id, label]) => `
+          ([id, icon, label]) => `
           <button class="nav-item ${active === id ? "active" : ""}" data-nav="${id}">
-            ${label}
+            <span class="nav-icon">${icon}</span>
+            <span class="nav-label">${label}</span>
           </button>
         `
         )
@@ -706,6 +707,11 @@ function render() {
           <strong>For You</strong>
           <h2>3 friends are going to events this week</h2>
           <p>CampusHub brings your best matches to the top so you can decide quickly and coordinate easily.</p>
+          <div class="banner-stats">
+            <div><span>12</span><small>Live today</small></div>
+            <div><span>38</span><small>This week</small></div>
+            <div><span>3</span><small>Friends going</small></div>
+          </div>
         </div>
 
         <div class="section-head">
