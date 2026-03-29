@@ -201,6 +201,7 @@ const flowList = document.getElementById("flowList");
 
 const state = {
   currentScreen: "welcome",
+  authMode: "signup",
   selectedEventId: events[0].id,
   savedEventIds: [events[0].id, events[2].id],
   joinedEventIds: [events[0].id],
@@ -599,17 +600,23 @@ function render() {
 
         <div class="auth-card stack">
           <div class="segmented">
-            <button class="active">Sign up</button>
-            <button>Log in</button>
+            <button class="${state.authMode === "signup" ? "active" : ""}" data-auth-mode="signup">Sign up</button>
+            <button class="${state.authMode === "login" ? "active" : ""}" data-auth-mode="login">Log in</button>
           </div>
           <div>
             <label class="field-label">Concordia Email</label>
             <input class="input-field" value="jane.doe@mail.concordia.ca" />
           </div>
           <div>
-            <label class="field-label">Password</label>
+            <label class="field-label">${state.authMode === "signup" ? "Create Password" : "Password"}</label>
             <input class="input-field" type="password" value="password" />
           </div>
+          ${state.authMode === "signup" ? `
+          <div>
+            <label class="field-label">Confirm Password</label>
+            <input class="input-field" type="password" value="password" />
+          </div>
+          ` : ""}
           <button class="cta-button" data-nav="interests">Continue</button>
           <button class="secondary-button">Continue with Concordia SSO</button>
           <p class="helper-text">
@@ -1311,6 +1318,13 @@ function bindInteractions() {
   document.querySelectorAll("[data-upload-trigger]").forEach((button) => {
     button.addEventListener("click", () => {
       updateCreateEventDraft("imageLabel", "Cover selected");
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-auth-mode]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.authMode = button.dataset.authMode;
       render();
     });
   });
