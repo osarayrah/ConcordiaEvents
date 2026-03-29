@@ -611,7 +611,6 @@ function render() {
             <input class="input-field" type="password" value="password" />
           </div>
           <button class="cta-button" data-nav="interests">Continue</button>
-          <button class="secondary-button">Continue with Google</button>
           <button class="secondary-button">Continue with Concordia SSO</button>
           <p class="helper-text">
             By continuing you agree to event reminders and campus club updates.
