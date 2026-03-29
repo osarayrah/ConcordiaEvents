@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusHub Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-left"></div>
+    <div class="ambient ambient-right"></div>
+
+    <main class="page-shell">
+      <section class="device-zone">
+        <div class="device-frame">
+          <div class="device-side device-side-left">
+            <span class="side-button mute-switch"></span>
+            <span class="side-button volume-up"></span>
+            <span class="side-button volume-down"></span>
+          </div>
+          <div class="device-side device-side-right">
+            <span class="side-button power-button"></span>
+          </div>
+          <div class="device-top-gloss"></div>
+          <div class="device-notch"></div>
+          <div class="device-title">Concordia Events</div>
+          <div class="status-bar">
+            <span>9:41</span>
+            <span></span>
+            <span>100%</span>
+          </div>
+          <div class="app-screen" id="app"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
