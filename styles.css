@@ -13,9 +13,9 @@
   --mint: #dfeccf;
   --lavender: #e9e3d3;
   --shadow: 0 22px 45px rgba(44, 44, 44, 0.12);
-  --iphone-width: 430px;
-  --iphone-height: 932px;
-  --iphone-padding: 12px;
+  --iphone-width: 380px;
+  --iphone-height: 820px;
+  --iphone-padding: 10px;
   --glass: rgba(255, 255, 255, 0.78);
   --glass-strong: rgba(255, 255, 255, 0.92);
 }
@@ -83,7 +83,7 @@ button {
   align-items: flex-start;
   max-width: 100%;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1.25rem 1rem;
 }
 
 .device-zone {
@@ -98,7 +98,7 @@ button {
   width: min(100%, var(--iphone-width));
   height: var(--iphone-height);
   padding: var(--iphone-padding);
-  border-radius: 52px;
+  border-radius: 46px;
   background:
     linear-gradient(135deg, #6d6a66 0%, #171717 16%, #3b3834 48%, #0a0a0a 100%);
   box-shadow:
@@ -110,11 +110,11 @@ button {
 
 .device-top-gloss {
   position: absolute;
-  top: 8px;
-  left: 12px;
-  right: 12px;
-  height: 120px;
-  border-radius: 40px 40px 28px 28px;
+  top: 7px;
+  left: 10px;
+  right: 10px;
+  height: 104px;
+  border-radius: 34px 34px 24px 24px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 70%);
   pointer-events: none;
   z-index: 1;
@@ -147,32 +147,32 @@ button {
 }
 
 .mute-switch {
-  top: 122px;
-  height: 28px;
+  top: 112px;
+  height: 24px;
 }
 
 .volume-up {
-  top: 176px;
-  height: 76px;
+  top: 160px;
+  height: 64px;
 }
 
 .volume-down {
-  top: 268px;
-  height: 76px;
+  top: 238px;
+  height: 64px;
 }
 
 .power-button {
-  top: 208px;
+  top: 188px;
   right: 0;
-  height: 118px;
+  height: 100px;
 }
 
 .device-notch {
   position: absolute;
-  top: 14px;
+  top: 12px;
   left: 50%;
-  width: 132px;
-  height: 32px;
+  width: 118px;
+  height: 28px;
   transform: translateX(-50%);
   border-radius: 18px;
   background:
@@ -186,11 +186,11 @@ button {
 
 .device-title {
   position: absolute;
-  top: 18px;
+  top: 16px;
   left: 50%;
   transform: translateX(-50%);
   color: #f8f4f4;
-  font-size: 0.76rem;
+  font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -202,9 +202,9 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.65rem 1.1rem 0.7rem;
+  padding: 0.58rem 0.95rem 0.62rem;
   color: #fff;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.03em;
   position: relative;
@@ -218,7 +218,7 @@ button {
   height: calc(var(--iphone-height) - 2 * var(--iphone-padding) - 44px);
   overflow-y: auto;
   overflow-x: hidden;
-  border-radius: 42px;
+  border-radius: 36px;
   background: linear-gradient(180deg, #fffdfb 0%, #f7f1f1 100%);
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -1233,12 +1233,12 @@ button {
 
   .device-frame {
     width: 100%;
-    height: 100vh;
-    border-radius: 32px;
+    height: min(100vh, 820px);
+    border-radius: 28px;
   }
 
   .app-screen {
-    height: calc(100vh - 2 * var(--iphone-padding) - 44px);
-    border-radius: 24px;
+    height: calc(min(100vh, 820px) - 2 * var(--iphone-padding) - 44px);
+    border-radius: 22px;
   }
 }
