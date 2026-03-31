@@ -605,7 +605,7 @@ function render() {
           </div>
           <div>
             <label class="field-label">Concordia Email</label>
-            <input class="input-field" value="jane.doe@mail.concordia.ca" />
+            <input class="input-field" value="example@gmail.com" />
           </div>
           <div>
             <label class="field-label">${state.authMode === "signup" ? "Create Password" : "Password"}</label>
@@ -685,7 +685,7 @@ function render() {
         <div class="screen-header">
           <div>
             <p class="eyebrow">Discover</p>
-            <h2 class="screen-title">Hi Jane, something good is happening today.</h2>
+            <h2 class="screen-title">Hi, something good is happening today.</h2>
             <p class="screen-subtitle">Personalized picks, popular campus moments, and what's coming up next.</p>
           </div>
           <button class="icon-button chip" data-nav="create">+</button>
@@ -1127,9 +1127,9 @@ function render() {
       <section class="screen">
         <div class="profile-header">
           <div class="profile-top">
-            <div class="profile-avatar">JD</div>
+            <div class="profile-avatar">FL</div>
             <div>
-              <h2>Jane Doe</h2>
+              <h2>First name Last name</h2>
               <p>Undergraduate · JMSB · Montreal</p>
             </div>
           </div>
