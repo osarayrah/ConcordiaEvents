@@ -1,119 +1,23 @@
-let events = [
-  {
-    id: "networking-night",
-    title: "Networking Night",
-    type: "Career",
-    faculty: "JMSB",
-    date: "Tonight · 7:00 PM",
-    fullDate: "Thursday, March 28 · 7:00 PM",
-    location: "John Molson Atrium",
-    attendees: ["MP", "KL", "AY"],
-    attendeeCount: 146,
-    saves: 218,
-    tags: ["Networking", "Career", "Free"],
-    organizer: "JMSB Career Management Services",
-    comfortNote: "Drop in anytime during the first hour. Most students arrive in small groups and name tags are provided.",
-    image: 0,
-    highlight: "Meet alumni, recruiters, and student founders in one evening.",
-    description:
-      "A polished evening mixer for Concordia students to meet alumni, club leaders, startup founders, and recruiters in a low-pressure networking setting.",
-  },
-  {
-    id: "engineering-career-fair",
-    title: "Engineering Career Fair",
-    type: "Career",
-    faculty: "Engineering & CS",
-    date: "Fri · 11:00 AM",
-    fullDate: "Friday, March 29 · 11:00 AM",
-    location: "EV Building Hall",
-    attendees: ["RS", "AM", "JD"],
-    attendeeCount: 312,
-    saves: 164,
-    tags: ["Engineering", "Internships", "Career"],
-    organizer: "Gina Cody School Career Services",
-    comfortNote: "Bring your student ID and resume if you want, but many students come just to explore booths first.",
-    image: 1,
-    highlight: "Top employers, internship booths, and resume feedback.",
-    description:
-      "A faculty-wide career fair featuring engineering employers, recruiters, capstone showcases, and rapid resume review stations for students.",
-  },
-  {
-    id: "hackathon",
-    title: "Hackathon",
-    type: "Career",
-    faculty: "Engineering & CS",
-    date: "Fri · 5:30 PM",
-    fullDate: "Friday, March 29 · 5:30 PM",
-    location: "JMSB Innovation Lab",
-    attendees: ["SJ", "LM", "TN"],
-    attendeeCount: 201,
-    saves: 201,
-    tags: ["Hackathon", "Tech", "Teams"],
-    organizer: "ConUHacks Student Team",
-    comfortNote: "Solo students are welcome. Team matching opens at the start so you do not need to arrive with a group.",
-    image: 2,
-    highlight: "Build fast, find teammates, and pitch by midnight.",
-    description:
-      "A beginner-friendly overnight build challenge where students team up, solve a campus problem, and get feedback from mentors and judges.",
-  },
-  {
-    id: "club-social",
-    title: "Club Social",
-    type: "Community",
-    faculty: "All Students",
-    date: "Sat · 1:00 PM",
-    fullDate: "Saturday, March 30 · 1:00 PM",
-    location: "Grey Nuns Lounge",
-    attendees: ["NB", "EL", "PM"],
-    attendeeCount: 143,
-    saves: 143,
-    tags: ["Social", "Clubs", "Snacks"],
-    organizer: "Concordia Student Union",
-    comfortNote: "This is a casual mixer with games and snacks, designed to be easy to join even if you come alone.",
-    image: 3,
-    highlight: "Casual games, snacks, and easy ways to meet new people.",
-    description:
-      "A casual student club mixer designed for first-years, transfer students, and anyone looking to meet people without the pressure of a formal event.",
-  },
-  {
-    id: "research-talk",
-    title: "Research Talk",
-    type: "Academic",
-    faculty: "Arts & Science",
-    date: "Sun · 6:30 PM",
-    fullDate: "Sunday, March 31 · 6:30 PM",
-    location: "Hall Building H-110",
-    attendees: ["CR", "FS", "NL"],
-    attendeeCount: 98,
-    saves: 98,
-    tags: ["Academic", "Talk", "Research"],
-    organizer: "Faculty of Arts and Science",
-    comfortNote: "No background knowledge is expected. There is a short Q&A and optional mingling after the talk.",
-    image: 1,
-    highlight: "Hear faculty and graduate researchers unpack emerging topics.",
-    description:
-      "An accessible research-focused event where students can listen to short talks, ask questions, and connect with labs or professors afterward.",
-  },
-  {
-    id: "mental-health-workshop",
-    title: "Mental Health Workshop",
-    type: "Wellness",
-    faculty: "Student Services",
-    date: "Mon · 4:00 PM",
-    fullDate: "Monday, April 1 · 4:00 PM",
-    location: "Wellness Centre",
-    attendees: ["JT", "OM", "RA"],
-    attendeeCount: 131,
-    saves: 131,
-    tags: ["Wellness", "Workshop", "Support"],
-    organizer: "Concordia Health Services",
-    comfortNote: "Quiet setting, low-pressure format, and students can participate as much or as little as they want.",
-    image: 0,
-    highlight: "Practical stress tools before finals and busy weeks.",
-    description:
-      "A student-focused workshop on stress regulation, burnout prevention, and campus support resources led by wellness facilitators.",
-  },
-];
+let events = [];
+
+const fallbackEvent = {
+  id: "loading",
+  title: "Campus Event",
+  type: "Community",
+  faculty: "All Students",
+  date: "TBD",
+  fullDate: "To be announced",
+  location: "Concordia University",
+  attendees: [],
+  attendeeCount: 0,
+  saves: 0,
+  tags: ["Campus"],
+  organizer: "Concordia Events",
+  comfortNote: "Event details will appear once the backend finishes loading data.",
+  image: 0,
+  highlight: "Loading event details.",
+  description: "Event information is loading from the backend.",
+};
 
 const screens = [
   {
@@ -202,9 +106,9 @@ const flowList = document.getElementById("flowList");
 const state = {
   currentScreen: "welcome",
   authMode: "signup",
-  selectedEventId: events[0].id,
-  savedEventIds: [events[0].id, events[2].id],
-  joinedEventIds: [events[0].id],
+  selectedEventId: null,
+  savedEventIds: [],
+  joinedEventIds: [],
   selectedInterests: ["Social", "Career", "Food", "International"],
   selectedFilters: {
     interest: "Social",
@@ -225,10 +129,21 @@ const state = {
     tags: "Career, Networking, Free Food, Open to All",
     imageLabel: "Choose cover",
   },
+  apiError: "",
+  isSubmittingEvent: false,
 };
 
-function init() {
+async function init() {
   renderBrief();
+  app.innerHTML = `
+    <section class="screen">
+      <div class="panel-card">
+        <h2 class="screen-title">Loading backend data</h2>
+        <p class="screen-subtitle">Fetching the latest events from the new API.</p>
+      </div>
+    </section>
+  `;
+  await loadEvents();
   render();
 }
 
@@ -249,13 +164,56 @@ function renderBrief() {
     .join("");
 }
 
+function syncStateWithEvents() {
+  if (!events.length) {
+    state.selectedEventId = null;
+    state.savedEventIds = [];
+    state.joinedEventIds = [];
+    return;
+  }
+
+  if (!state.selectedEventId || !events.some((event) => event.id === state.selectedEventId)) {
+    state.selectedEventId = events[0].id;
+  }
+
+  if (!state.savedEventIds.length) {
+    state.savedEventIds = [events[0]?.id, events[2]?.id].filter(Boolean);
+  } else {
+    state.savedEventIds = state.savedEventIds.filter((id) => events.some((event) => event.id === id));
+  }
+
+  if (!state.joinedEventIds.length) {
+    state.joinedEventIds = [events[0]?.id].filter(Boolean);
+  } else {
+    state.joinedEventIds = state.joinedEventIds.filter((id) => events.some((event) => event.id === id));
+  }
+}
+
+async function loadEvents() {
+  try {
+    const response = await fetch("/api/events");
+    if (!response.ok) {
+      throw new Error("Unable to load events from the backend.");
+    }
+
+    const payload = await response.json();
+    events = Array.isArray(payload.events) ? payload.events : [];
+    state.apiError = "";
+    syncStateWithEvents();
+  } catch (error) {
+    state.apiError = "Backend unavailable. Start the Node server to load live event data.";
+    events = [];
+    syncStateWithEvents();
+  }
+}
+
 function goTo(screenId) {
   state.currentScreen = screenId;
   render();
 }
 
 function getSelectedEvent() {
-  return events.find((event) => event.id === state.selectedEventId) || events[0];
+  return events.find((event) => event.id === state.selectedEventId) || events[0] || fallbackEvent;
 }
 
 function isSaved(id) {
@@ -327,7 +285,7 @@ function formatShortDate(dateValue, timeValue) {
   return `${weekday} · ${timeValue || "TBD"}`;
 }
 
-function publishCreatedEvent() {
+async function publishCreatedEvent() {
   const draft = state.createEventDraft;
   const cleanTitle = draft.title.trim();
   const cleanDescription = draft.description.trim();
@@ -344,9 +302,11 @@ function publishCreatedEvent() {
     return;
   }
 
-  const id = `${cleanTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`;
-  const createdEvent = {
-    id,
+  state.isSubmittingEvent = true;
+  state.apiError = "";
+  render();
+
+  const createdEventPayload = {
     title: cleanTitle,
     description: cleanDescription,
     type: cleanCategory,
@@ -360,14 +320,46 @@ function publishCreatedEvent() {
     tags: cleanTags.length ? cleanTags : [cleanCategory],
     organizer: "CampusHub Club Organizer",
     comfortNote: "Shared by a student organizer. Attendees can save it, invite friends, and coordinate from the event page.",
-    image: events.length % 4,
     highlight: cleanDescription.slice(0, 90) + (cleanDescription.length > 90 ? "..." : ""),
   };
 
-  events = [createdEvent, ...events];
-  state.selectedEventId = createdEvent.id;
-  state.savedEventIds = [createdEvent.id, ...state.savedEventIds];
-  state.currentScreen = "details";
+  try {
+    const response = await fetch("/api/events", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(createdEventPayload),
+    });
+
+    const payload = await response.json();
+
+    if (!response.ok) {
+      throw new Error(payload.error || "Unable to publish event.");
+    }
+
+    const createdEvent = payload.event;
+    events = [createdEvent, ...events];
+    state.selectedEventId = createdEvent.id;
+    state.savedEventIds = [createdEvent.id, ...state.savedEventIds.filter((id) => id !== createdEvent.id)];
+    state.currentScreen = "details";
+    state.createEventDraft = {
+      ...state.createEventDraft,
+      title: "Concordia Club Networking Night",
+      description:
+        "Meet club leaders, students, and alumni for casual networking, quick intros, and a low-pressure evening mixer.",
+      date: "April 12",
+      time: "5:00 PM - 7:00 PM",
+      location: "John Molson Lobby",
+      category: "Career",
+      tags: "Career, Networking, Free Food, Open to All",
+      imageLabel: "Choose cover",
+    };
+  } catch (error) {
+    state.apiError = error.message;
+  } finally {
+    state.isSubmittingEvent = false;
+  }
 }
 
 function matchesHomeCategory(event) {
@@ -696,6 +688,13 @@ function render() {
           <input value="${state.searchQuery}" placeholder="Search events, clubs, topics" data-search-input />
           <button class="chip active" data-nav="search">Filter</button>
         </div>
+
+        ${state.apiError ? `
+          <div class="panel-card">
+            <h3 class="section-label">Backend status</h3>
+            <p class="section-copy">${state.apiError}</p>
+          </div>
+        ` : ""}
 
         <div class="chip-row">
           ${["For You", "Career", "Community", "Wellness", "Academic", "Free"]
@@ -1176,6 +1175,13 @@ function render() {
           <button class="chip" data-nav="profile">Close</button>
         </div>
 
+        ${state.apiError ? `
+          <div class="panel-card">
+            <h3 class="section-label">Publishing status</h3>
+            <p class="section-copy">${state.apiError}</p>
+          </div>
+        ` : ""}
+
         <div class="creator-card stack">
           <div class="creator-topbar">
             <span class="event-tag">Club Organizer</span>
@@ -1224,7 +1230,9 @@ function render() {
           </div>
           <div class="creator-footer">
             <p class="helper-text">Students will see this in personalized recommendations and search.</p>
-            <button class="cta-button" data-publish-event="true">Publish Event</button>
+            <button class="cta-button" data-publish-event="true" ${state.isSubmittingEvent ? "disabled" : ""}>
+              ${state.isSubmittingEvent ? "Publishing..." : "Publish Event"}
+            </button>
           </div>
         </div>
 
@@ -1330,8 +1338,8 @@ function bindInteractions() {
   });
 
   document.querySelectorAll("[data-publish-event]").forEach((button) => {
-    button.addEventListener("click", () => {
-      publishCreatedEvent();
+    button.addEventListener("click", async () => {
+      await publishCreatedEvent();
       render();
     });
   });

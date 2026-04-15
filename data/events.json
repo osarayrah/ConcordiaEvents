@@ -1,0 +1,158 @@
+[
+  {
+    "id": "networking-night",
+    "title": "Networking Night",
+    "type": "Career",
+    "faculty": "JMSB",
+    "date": "Tonight · 7:00 PM",
+    "fullDate": "Thursday, March 28 · 7:00 PM",
+    "location": "John Molson Atrium",
+    "attendees": [
+      "MP",
+      "KL",
+      "AY"
+    ],
+    "attendeeCount": 146,
+    "saves": 218,
+    "tags": [
+      "Networking",
+      "Career",
+      "Free"
+    ],
+    "organizer": "JMSB Career Management Services",
+    "comfortNote": "Drop in anytime during the first hour. Most students arrive in small groups and name tags are provided.",
+    "image": 0,
+    "highlight": "Meet alumni, recruiters, and student founders in one evening.",
+    "description": "A polished evening mixer for Concordia students to meet alumni, club leaders, startup founders, and recruiters in a low-pressure networking setting."
+  },
+  {
+    "id": "engineering-career-fair",
+    "title": "Engineering Career Fair",
+    "type": "Career",
+    "faculty": "Engineering & CS",
+    "date": "Fri · 11:00 AM",
+    "fullDate": "Friday, March 29 · 11:00 AM",
+    "location": "EV Building Hall",
+    "attendees": [
+      "RS",
+      "AM",
+      "JD"
+    ],
+    "attendeeCount": 312,
+    "saves": 164,
+    "tags": [
+      "Engineering",
+      "Internships",
+      "Career"
+    ],
+    "organizer": "Gina Cody School Career Services",
+    "comfortNote": "Bring your student ID and resume if you want, but many students come just to explore booths first.",
+    "image": 1,
+    "highlight": "Top employers, internship booths, and resume feedback.",
+    "description": "A faculty-wide career fair featuring engineering employers, recruiters, capstone showcases, and rapid resume review stations for students."
+  },
+  {
+    "id": "hackathon",
+    "title": "Hackathon",
+    "type": "Career",
+    "faculty": "Engineering & CS",
+    "date": "Fri · 5:30 PM",
+    "fullDate": "Friday, March 29 · 5:30 PM",
+    "location": "JMSB Innovation Lab",
+    "attendees": [
+      "SJ",
+      "LM",
+      "TN"
+    ],
+    "attendeeCount": 201,
+    "saves": 201,
+    "tags": [
+      "Hackathon",
+      "Tech",
+      "Teams"
+    ],
+    "organizer": "ConUHacks Student Team",
+    "comfortNote": "Solo students are welcome. Team matching opens at the start so you do not need to arrive with a group.",
+    "image": 2,
+    "highlight": "Build fast, find teammates, and pitch by midnight.",
+    "description": "A beginner-friendly overnight build challenge where students team up, solve a campus problem, and get feedback from mentors and judges."
+  },
+  {
+    "id": "club-social",
+    "title": "Club Social",
+    "type": "Community",
+    "faculty": "All Students",
+    "date": "Sat · 1:00 PM",
+    "fullDate": "Saturday, March 30 · 1:00 PM",
+    "location": "Grey Nuns Lounge",
+    "attendees": [
+      "NB",
+      "EL",
+      "PM"
+    ],
+    "attendeeCount": 143,
+    "saves": 143,
+    "tags": [
+      "Social",
+      "Clubs",
+      "Snacks"
+    ],
+    "organizer": "Concordia Student Union",
+    "comfortNote": "This is a casual mixer with games and snacks, designed to be easy to join even if you come alone.",
+    "image": 3,
+    "highlight": "Casual games, snacks, and easy ways to meet new people.",
+    "description": "A casual student club mixer designed for first-years, transfer students, and anyone looking to meet people without the pressure of a formal event."
+  },
+  {
+    "id": "research-talk",
+    "title": "Research Talk",
+    "type": "Academic",
+    "faculty": "Arts & Science",
+    "date": "Sun · 6:30 PM",
+    "fullDate": "Sunday, March 31 · 6:30 PM",
+    "location": "Hall Building H-110",
+    "attendees": [
+      "CR",
+      "FS",
+      "NL"
+    ],
+    "attendeeCount": 98,
+    "saves": 98,
+    "tags": [
+      "Academic",
+      "Talk",
+      "Research"
+    ],
+    "organizer": "Faculty of Arts and Science",
+    "comfortNote": "No background knowledge is expected. There is a short Q&A and optional mingling after the talk.",
+    "image": 1,
+    "highlight": "Hear faculty and graduate researchers unpack emerging topics.",
+    "description": "An accessible research-focused event where students can listen to short talks, ask questions, and connect with labs or professors afterward."
+  },
+  {
+    "id": "mental-health-workshop",
+    "title": "Mental Health Workshop",
+    "type": "Wellness",
+    "faculty": "Student Services",
+    "date": "Mon · 4:00 PM",
+    "fullDate": "Monday, April 1 · 4:00 PM",
+    "location": "Wellness Centre",
+    "attendees": [
+      "JT",
+      "OM",
+      "RA"
+    ],
+    "attendeeCount": 131,
+    "saves": 131,
+    "tags": [
+      "Wellness",
+      "Workshop",
+      "Support"
+    ],
+    "organizer": "Concordia Health Services",
+    "comfortNote": "Quiet setting, low-pressure format, and students can participate as much or as little as they want.",
+    "image": 0,
+    "highlight": "Practical stress tools before finals and busy weeks.",
+    "description": "A student-focused workshop on stress regulation, burnout prevention, and campus support resources led by wellness facilitators."
+  }
+]

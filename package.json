@@ -1,0 +1,9 @@
+{
+  "name": "concordia-events",
+  "version": "1.0.0",
+  "description": "Concordia Events full-stack prototype",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

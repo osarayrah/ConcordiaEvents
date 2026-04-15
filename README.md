@@ -1,6 +1,6 @@
 # Concordia Events Prototype
 
-A high-fidelity mobile prototype for `CampusHub`, a Concordia University event discovery app.
+A lightweight full-stack prototype for `CampusHub`, a Concordia University event discovery app.
 
 ## Overview
 
@@ -35,19 +35,33 @@ The experience focuses on:
 - Clickable navigation between screens
 - Working filters
 - Save and join interactions
-- Event creation flow that adds new events into the prototype
+- Event creation flow that saves new events through a backend API
+- Node.js backend that serves the frontend and exposes event endpoints
+- JSON-backed event persistence for local development
 
 ## Project Files
 
 - [index.html](./index.html): main prototype shell
 - [styles.css](./styles.css): UI styling and iPhone frame
-- [app.js](./app.js): mock data, navigation, filtering, and interactions
+- [app.js](./app.js): frontend UI, navigation, API fetching, and interactions
+- [server.js](./server.js): Node HTTP server and backend API
+- [data/events.json](./data/events.json): persisted event data for the backend
 
 ## How to Run
 
-Open `index.html` in a browser.
+1. Start the server:
 
-No build step or backend is required.
+```bash
+npm start
+```
+
+2. Open `http://localhost:3000` in a browser.
+
+## API Endpoints
+
+- `GET /api/health`: backend health check
+- `GET /api/events`: fetch all events
+- `POST /api/events`: create a new event
 
 ## GitHub
 
