@@ -1,68 +1,48 @@
-# Concordia Events Prototype
+# Concordia Events Expo App
 
-A lightweight full-stack prototype for `CampusHub`, a Concordia University event discovery app.
+Concordia Events is now an Expo React Native mobile prototype. The project is set up to run in Expo Go, on an iOS simulator, or on an Android emulator.
 
-## Overview
+## Setup
 
-This prototype is designed to help students discover campus events in one place instead of searching across Instagram, Discord, email, and posters.
+Install dependencies:
 
-The experience focuses on:
+```bash
+npm install
+```
 
-- event discovery
-- personalized recommendations
-- social coordination with friends
-- lightweight event creation for student clubs and organizers
+## Run The App
 
-## Screens Included
-
-- Splash screen
-- Login / signup
-- Interest selection
-- Home feed
-- Search and filters
-- Event details
-- Friends attending / social coordination
-- Saved events
-- Notifications
-- Profile
-- Create event
-
-## Prototype Features
-
-- iPhone-style device frame
-- Concordia-inspired color palette
-- Scrollable in-phone experience
-- Clickable navigation between screens
-- Working filters
-- Save and join interactions
-- Event creation flow that saves new events through a backend API
-- Node.js backend that serves the frontend and exposes event endpoints
-- JSON-backed event persistence for local development
-
-## Project Files
-
-- [index.html](./index.html): main prototype shell
-- [styles.css](./styles.css): UI styling and iPhone frame
-- [app.js](./app.js): frontend UI, navigation, API fetching, and interactions
-- [server.js](./server.js): Node HTTP server and backend API
-- [data/events.json](./data/events.json): persisted event data for the backend
-
-## How to Run
-
-1. Start the server:
+Start Expo:
 
 ```bash
 npm start
 ```
 
-2. Open `http://localhost:3000` in a browser.
+Start Expo in tunnel mode:
 
-## API Endpoints
+```bash
+npm start -- --tunnel
+```
 
-- `GET /api/health`: backend health check
-- `GET /api/events`: fetch all events
-- `POST /api/events`: create a new event
+You can also use:
 
-## GitHub
+```bash
+npm run ios
+npm run android
+npm run web
+```
 
-Repository: `https://github.com/osarayrah/ConcordiaEvents`
+## Open In Expo Go
+
+1. Run `npm start -- --tunnel`
+2. Scan the QR code in the terminal with Expo Go
+3. Keep the terminal running while you use the app
+
+Tunnel mode is the best option when your phone and computer are not on the same network.
+
+## Project Files
+
+- `App.js`: main Expo app screen and prototype logic
+- `app.json`: Expo app configuration
+- `package.json`: scripts and dependencies
+- `package-lock.json`: locked dependency versions
