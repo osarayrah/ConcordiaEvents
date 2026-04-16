@@ -41,7 +41,7 @@ npm run web
 Tunnel mode is the best option when your phone and computer are not on the same network.
 
 ## Project Files
-
+- Video Reprsentation: https://www.youtube.com/watch?v=SrPyzEbY1Aw
 - `App.js`: main Expo app screen and prototype logic
 - `app.json`: Expo app configuration
 - `package.json`: scripts and dependencies
